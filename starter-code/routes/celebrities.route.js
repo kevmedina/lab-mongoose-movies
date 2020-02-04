@@ -40,7 +40,7 @@ router.post('/celebrities/new-celebrity', (req, res, next) => {
 
 // 5 Deleting a celebrity
 router.post('/celebrities/:id/delete', (req, res, next) => {
-    Celebrity.findByIdAndRemove(req.body.id)
+    Celebrity.findByIdAndRemove(req.params.id)
     .then(theCelebritiy => {
         console.log('The deleted celebrity: ', theCelebritiy);
         res.redirect('/celebrities');
