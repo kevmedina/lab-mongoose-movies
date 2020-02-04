@@ -1,13 +1,6 @@
-const mongoose = require('mongoose');
 const Celebrity = require('../models/Celebrity.model');
 
-const DB_NAME = 'mongoose-movies';
-
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+require('./config/db.config');
 
 const celebrities = [
     {
@@ -30,7 +23,7 @@ const celebrities = [
 Celebrity.create(celebrities)
 .then(celebritiesFromDB => {
     console.log(celebritiesFromDB);
-    mongoose.connection.close();
+    // mongoose.connection.close();
 })
 .catch(err => console.log(`An error occured: ${err}`));
 
